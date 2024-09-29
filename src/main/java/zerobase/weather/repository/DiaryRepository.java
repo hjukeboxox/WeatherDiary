@@ -14,11 +14,14 @@ public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
     List<Diary> findAllByDateBetween(LocalDate startDate, LocalDate endDate);
 
+
     //select * from 테이블 where date= date limit 1; 느낌임...
+
     Diary getFirstByDate(LocalDate date);
 
-    @Transactional
-    void deleteAllByDate(LocalDate date); //@Transactional 추가 안하면 안지워짐..
+
+    void deleteAllByDate(LocalDate date);
+    //@Transactional 추가 안하면 안지워짐..
     //호출시킴으로서 데이터상태가 변경되는걸 원하지않으면 과정에서 변경된거를 원복시켜놓는게 @Transactional
     //또다른  @Transactional 기능으로선 스프링과 db가 데이터 주고 받을때 예외들이나 오류들이 발생함
 
